@@ -1,6 +1,6 @@
-package com.proyecto1version2.ui;
+package com.progra.proyecto.ui;
 
-import com.progra.pelicula.bl.Cliente;
+import com.progra.proyecto.bl.entities.Cliente;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

@@ -1,6 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="Cliente" scope="request" class="com.progra.pelicula.bl.Cliente"/>
+<jsp:useBean id="Cliente" scope="request" class="com.progra.proyecto.bl.entities.Cliente"/>
 
 <html >
 <head>

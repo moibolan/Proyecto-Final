@@ -1,14 +1,11 @@
-package com.proyecto1version2.ui;
+package com.progra.proyecto.ui;
 
-import com.progra.pelicula.bl.Cliente;
-import com.progra.pelicula.bl.Pelicula;
+import com.progra.proyecto.bl.entities.Cliente;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 
 @WebServlet(name = "Solicitud", value = "/Solicitud")
 public class Solicitud extends HttpServlet {

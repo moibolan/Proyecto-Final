@@ -1,4 +1,4 @@
-package com.proyecto1version2.ui;
+package com.progra.proyecto.ui;
 
 
 import java.io.BufferedReader;

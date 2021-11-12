@@ -1,4 +1,4 @@
-package com.progra.pelicula.bl;
+package com.progra.proyecto.bl.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
