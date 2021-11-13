@@ -24,16 +24,21 @@ public class LoginServlet extends HttpServlet {
         ServletContext aplicacion = request.getServletContext(); // De vuelve el contexto de la aplicacion
         aplicacion.setAttribute("variableAplicacion", "aplicacionWeb"); //
 
-        String user, password;
+        String user;
+        Double password;
 
         try{
 
             user = request.getParameter("username");
-            password = request.getParameter("password");
+            password = Double.parseDouble(request.getParameter("password"));
+
+            System.out.println(user);
+            System.out.println(password);
+
 
             if(!user.equals("") && !password.equals("")){
                 Usuario usuario = new Usuario();
-                usuario.setNombreUsuario(user);
+                usuario.setUsuario(user);
                 usuario.setPassword(password);
 
                 LoginService loginService = new LoginServiceImpl();
@@ -41,7 +46,8 @@ public class LoginServlet extends HttpServlet {
                 usuario = loginService.login(usuario);
                 System.out.println("Estamos en login servlet hola  2   !!");
 
-                if(Optional.ofNullable(usuario.getTipoUsuario()).isPresent()){
+               ;
+                if(Optional.ofNullable(usuario.getRol()).isPresent()){
 
                     //podemos verificar si ya una sesion anterior e invalidarla
                     HttpSession oldSession = request.getSession(false);
@@ -64,7 +70,15 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("usuario", usuario);
 
                     System.out.println("Estamos en login servlet hola  5   !!");
-                    response.sendRedirect("catalogo.html");
+
+                    String temp = usuario.getRol();
+                    System.out.println(temp);
+                    if(temp.equals("Administrador")) {
+                        response.sendRedirect("catalogo.html");
+                    }else if(temp.equals("Cliente")){
+                        response.sendRedirect("home.html");
+
+                    }
 
                 }else{
                     throw new Exception("Login Incorrecto");

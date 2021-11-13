@@ -2,20 +2,24 @@ package com.progra.proyecto.bl.entities;
 
 public class Usuario {
     private int id;
-    private String nombreUsuario;
-    private String password;
-    private Integer estado;
-    private Integer tipoUsuario;
+    private String nombre;
+    private String rol;
+    private String usuario;
+    private Double password;
+    private String fecha_creacion;
+    private String ultima_conexion;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String nombreUsuario, String password, Integer estado, Integer tipoUsuario) {
+    public Usuario(int id, String nombre, String rol, String usuario, Double password, String fecha_creacion, String ultima_conexion) {
         this.id = id;
-        this.nombreUsuario = nombreUsuario;
+        this.nombre = nombre;
+        this.rol = rol;
+        this.usuario = usuario;
         this.password = password;
-        this.estado = estado;
-        this.tipoUsuario = tipoUsuario;
+        this.fecha_creacion = fecha_creacion;
+        this.ultima_conexion = ultima_conexion;
     }
 
     public int getId() {
@@ -26,35 +30,52 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getPassword() {
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public Double getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(Double password) {
         this.password = password;
     }
 
-    public Integer getEstado() {
-        return estado;
+    public String getFecha_creacion() {
+        return fecha_creacion;
     }
 
-    public void setEstado(Integer estado) {
-        this.estado = estado;
+    public void setFecha_creacion(String fecha_creacion) {
+        this.fecha_creacion = fecha_creacion;
     }
 
-    public Integer getTipoUsuario() {
-        return tipoUsuario;
+    public String getUltima_conexion() {
+        return ultima_conexion;
     }
 
-    public void setTipoUsuario(Integer tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
+    public void setUltima_conexion(String ultima_conexion) {
+        this.ultima_conexion = ultima_conexion;
     }
 }
+

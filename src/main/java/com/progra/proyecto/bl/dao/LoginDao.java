@@ -15,26 +15,42 @@ public class LoginDao {
         ResultSet rs;
         try
         {
+
+            System.out.println(usu.getUsuario());
+            System.out.println(usu.getPassword());
+
+
             System.out.println("Estamos desde el metodo loing en LoginDAO    1  ");
-            String sql = "select nombreUsuario, tipoUsuario, estado from usuarios where nombreUsuario=? and password=?";
+            String sql = "select nombre, rol, fecha_creacion, ultima_conexion  from usuarios where usuario=? and password=?";
+
             System.out.println("Estamos desde el metodo loing en LoginDAO    2  ");
             PreparedStatement ps =connection.prepareStatement(sql);
 
             System.out.println("Estamos desde el metodo loing en LoginDAO    3  ");
-            ps.setString(1, usu.getNombreUsuario());
-            ps.setString(2, usu.getPassword());
+
+            System.out.println(usu.getUsuario());
+            System.out.println(usu.getPassword());
+
+
+            ps.setString(1, usu.getUsuario());
+            ps.setDouble(2, usu.getPassword());
             rs= ps.executeQuery();
 
+            
             System.out.println("Estamos desde el metodo loing en LoginDAO    4  ");
 
             if (rs.next()) {
-                usu.setNombreUsuario(rs.getString("nombreUsuario"));
-                usu.setTipoUsuario(rs.getInt("tipoUsuario"));
-                usu.setEstado(rs.getInt("estado"));
 
-                System.out.println(usu.getNombreUsuario());
-                System.out.println(usu.getTipoUsuario());
-                System.out.println(usu.getEstado());
+                usu.setNombre(rs.getString("nombre"));
+                usu.setRol(rs.getString("rol"));
+                usu.setFecha_creacion(rs.getString("fecha_creacion"));
+                usu.setUltima_conexion(rs.getString("ultima_conexion"));
+
+                System.out.println(usu.getUsuario());
+                System.out.println(usu.getRol());
+                System.out.println(usu.getFecha_creacion());
+                System.out.println(usu.getUltima_conexion());
+
             }
             System.out.println("Estamos desde el metodo loing en LoginDAO    5  ");
 
