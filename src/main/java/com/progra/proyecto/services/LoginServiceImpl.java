@@ -12,6 +12,7 @@ public class LoginServiceImpl implements LoginService{
     }
 
     public Usuario login(Usuario usuario) throws Exception {
+
         System.out.println("ESTAMOS INTENTANDO DESDE LOSING SERVICE IMP");
         System.out.println(usuario.getUsuario());
         System.out.println(usuario.getPassword());

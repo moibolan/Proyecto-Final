@@ -15,8 +15,10 @@ public class UsuarioDao {
     public final static Connection connection = Conexion.getConnection();
     Connection con;
     PreparedStatement ps;
+    int r;
     ResultSet rs;
     Conexion cn = new Conexion();
+
 
     public Usuario login(Usuario usu)throws SQLException
     {
@@ -99,7 +101,24 @@ public class UsuarioDao {
     }
 
 
+    public int Agregar(Usuario usuario) {
 
+        String sentencia = "INSERT INTO usuarios (nombre,rol,usuario,password,fecha_creacion,ultima_conexion) VALUES (?,?,?,?,?,?)";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sentencia);
+            ps.setString(1, usuario.getNombre());
+            ps.setString(2, usuario.getRol());
+            ps.setString(3, usuario.getUsuario());
+            ps.setDouble(4, usuario.getPassword());
+            ps.setString(5, usuario.getFecha_creacion());
+            ps.setString(6, usuario.getUltima_conexion());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return r;
+    }
 
 
 

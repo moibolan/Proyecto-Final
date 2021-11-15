@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group">
                         <label>Rol</label>
-                        <select class="form-control form-control-sm" name="txtrol">
+                        <select class="form-control form-control-sm" name="rol">
                             <option>Administrador</option>
                             <option>Cliente</option>
                         </select>
