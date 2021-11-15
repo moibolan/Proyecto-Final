@@ -26,38 +26,38 @@
 <div class="row">
     <div class="card col-md-4">
         <div class="card-body">
-            <h5 class="card-title">Empleados</h5>
+            <h5 class="card-title">Usuarios</h5>
             <h6 class="card-subtitle mb-2 text-muted">En este panel podras gestionar los datos de los usuarios.</h6>
             <div>
                 <form action="Controlador?menu=admUsuarios" method="POST">
 
                     <div class="form-group">
                         <label>Nombre</label>
-                        <input type="text" class="form-control" name="nombre">
+                        <input type="text" class="form-control" name="nombre" value="${usuarioSeleccionado.getNombre()}">
                     </div>
                     <div class="form-group">
                         <label>Rol</label>
-                        <select class="form-control form-control-sm" name="rol">
+                        <select class="form-control form-control-sm" name="rol" value="${usuarioSeleccionado.getRol()}">
                             <option>Administrador</option>
                             <option>Cliente</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Usuario</label>
-                        <input type="text" class="form-control" name="usuario">
+                        <input type="text" class="form-control" name="usuario" value="${usuarioSeleccionado.getUsuario()}">
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="number" class="form-control" name="password">
+                        <input type="number" class="form-control" name="password" value="${usuarioSeleccionado.getPassword()}">
                     </div>
 
                     <div class="form-group">
                         <label>Fecha Creacion</label>
-                        <input type="date" class="form-control" name="fecha_creacion">
+                        <input type="date" class="form-control" name="fecha_creacion" value="${usuarioSeleccionado.getFecha_creacion()}">
                     </div>
                     <div class="form-group">
                         <label>Ultima Conexion</label>
-                        <input type="date" class="form-control" name="ultima_conexion">
+                        <input type="date" class="form-control" name="ultima_conexion" value="${usuarioSeleccionado.getUltima_conexion()}">
                     </div>
 
                     <input type="submit" class="btn btn-primary" name="accion" value="Agregar" >
@@ -94,8 +94,8 @@
                     <td>${usuario.getFecha_creacion()}</td>
                     <td>${usuario.getUltima_conexion()}</td>
                     <td>
-                        <a class="btn btn-warning" href="Controlador?menu=Empleados&accion=Cargar&id=${usuario.getId()}">Editar</a>
-                        <a class="btn btn-danger" href="Controlador?menu=Empleados&accion=Eliminar&id=${usuario.getId()}">Eliminar</a>
+                        <a class="btn btn-warning" href="Controlador?menu=admUsuarios&accion=Cargar&id=${usuario.getId()}">Editar</a>
+                        <a class="btn btn-danger" href="Controlador?menu=admUsuarios&accion=Eliminar&id=${usuario.getId()}">Eliminar</a>
                     </td>
 
                 </tr>

@@ -121,6 +121,51 @@ public class UsuarioDao {
     }
 
 
+    public Usuario ListarPorId(int id) {
+        Usuario usuario = new Usuario();
+        String consulta = "SELECT * FROM usuarios WHERE id=" + id;
+        con = cn.getConnection();
+        try {
+            ps = con.prepareStatement(consulta);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+
+                usuario.setNombre(rs.getString(2));
+                usuario.setRol(rs.getString(3));
+                usuario.setUsuario(rs.getString(4));
+                usuario.setPassword(rs.getDouble(5));
+                usuario.setFecha_creacion(rs.getString(6));
+                usuario.setUltima_conexion(rs.getString(7));
+
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return usuario;
+
+    }
+
+    public int Actualizar(Usuario usuario) {
+        String sentencia = "UPDATE usuarios set nombre=?,rol=?,usuario=?,password=?,fecha_creacion=?,ultima_conexion=? WHERE id=?";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sentencia);
+            ps.setString(1, usuario.getNombre());
+            ps.setString(2, usuario.getRol());
+            ps.setString(3, usuario.getUsuario());
+            ps.setDouble(4, usuario.getPassword());
+            ps.setString(5, usuario.getFecha_creacion());
+            ps.setString(6, usuario.getUltima_conexion());
+            ps.setInt(7, usuario.getId());
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return r;
+    }
 
 
 

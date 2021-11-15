@@ -15,7 +15,7 @@ public class Controlador extends HttpServlet {
 
     Usuario usuario = new Usuario();
     UsuarioDao usuarioDao = new UsuarioDao();
-
+    int idUsuario;
 
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -70,8 +70,33 @@ public class Controlador extends HttpServlet {
                 case "Eliminar":
                     break;
                 case "Actualizar":
+
+                    Usuario usuario1 = new Usuario();
+                    String nombreUpdate = request.getParameter("nombre");
+                    String rolUpdate = request.getParameter("rol");
+                    String usuarioUpdate = request.getParameter("usuario");
+                    String passwordUpdate = request.getParameter("password");
+                    String fecha_creacionUpdate = request.getParameter("fecha_creacion");
+                    String ultima_conexionUpdate = request.getParameter("ultima_conexion");
+
+                    usuario1.setNombre(nombreUpdate);
+                    usuario1.setRol(rolUpdate);
+                    usuario1.setUsuario(usuarioUpdate);
+                    usuario1.setPassword(Double.parseDouble(passwordUpdate));
+                    usuario1.setFecha_creacion(fecha_creacionUpdate);
+                    usuario1.setUltima_conexion(ultima_conexionUpdate);
+
+                    usuario1.setId(idUsuario);
+                    usuarioDao.Actualizar(usuario1);
+                    request.getRequestDispatcher("Controlador?menu=admUsuarios&accion=Listar").forward(request, response);
                     break;
+
                 case "Cargar":
+                    idUsuario = Integer.parseInt(request.getParameter("id"));
+                    Usuario usuario = usuarioDao.ListarPorId(idUsuario);
+                    request.setAttribute("usuarioSeleccionado", usuario);
+                    request.getRequestDispatcher("Controlador?menu=admUsuarios&accion=Listar").forward(request, response);
+
                     break;
             }
 
