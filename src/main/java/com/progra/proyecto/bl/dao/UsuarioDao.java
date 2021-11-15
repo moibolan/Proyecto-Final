@@ -5,10 +5,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
-public class LoginDao {
+public class UsuarioDao {
     public final static Connection connection = Conexion.getConnection();
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    Conexion cn = new Conexion();
 
     public Usuario login(Usuario usu)throws SQLException
     {
@@ -61,4 +69,43 @@ public class LoginDao {
         }
         return usu;
     }
+
+    public List Listar() {
+        String consulta = "SELECT * FROM usuarios";
+        List<Usuario> lista = new ArrayList();
+
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(consulta);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId(rs.getInt("id"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setRol(rs.getString("rol"));
+                usuario.setUsuario(rs.getString("usuario"));
+                usuario.setPassword(rs.getDouble("password"));
+                usuario.setFecha_creacion(rs.getString("fecha_creacion"));
+                usuario.setUltima_conexion(rs.getString("ultima_conexion"));
+
+                lista.add(usuario);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 }

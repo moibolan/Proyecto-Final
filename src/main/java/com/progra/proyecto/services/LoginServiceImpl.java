@@ -1,18 +1,14 @@
 package com.progra.proyecto.services;
 
 import com.progra.proyecto.bl.entities.Usuario;
-import com.progra.proyecto.bl.dao.LoginDao;
-
- 
-
-import java.util.ArrayList;
+import com.progra.proyecto.bl.dao.UsuarioDao;
 
 public class LoginServiceImpl implements LoginService{
 
-    private LoginDao loginDao;
+    private UsuarioDao usuarioDao;
 
     public LoginServiceImpl() {
-        loginDao = new LoginDao();
+        usuarioDao = new UsuarioDao();
     }
 
     public Usuario login(Usuario usuario) throws Exception {
@@ -20,7 +16,7 @@ public class LoginServiceImpl implements LoginService{
         System.out.println(usuario.getUsuario());
         System.out.println(usuario.getPassword());
 
-        return loginDao.login(usuario);
+        return usuarioDao.login(usuario);
     }
 
 }

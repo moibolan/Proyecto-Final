@@ -74,7 +74,8 @@ public class LoginServlet extends HttpServlet {
                     String temp = usuario.getRol();
                     System.out.println(temp);
                     if(temp.equals("Administrador")) {
-                        response.sendRedirect("catalogo.html");
+                        response.sendRedirect("Controlador?menu=Principal");
+                        //request.getRequestDispatcher("Controlador?menu=Principal");
                     }else if(temp.equals("Cliente")){
                         response.sendRedirect("home.html");
 
