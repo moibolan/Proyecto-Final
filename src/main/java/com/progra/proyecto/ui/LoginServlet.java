@@ -42,9 +42,9 @@ public class LoginServlet extends HttpServlet {
                 usuario.setPassword(password);
 
                 LoginService loginService = new LoginServiceImpl();
-                System.out.println("Estamos en login servlet hola  1   !!");
+
                 usuario = loginService.login(usuario);
-                System.out.println("Estamos en login servlet hola  2   !!");
+
 
                ;
                 if(Optional.ofNullable(usuario.getRol()).isPresent()){
@@ -55,21 +55,16 @@ public class LoginServlet extends HttpServlet {
                         oldSession.invalidate();
                     }
 
-                    System.out.println("Estamos en login servlet hola  3   !!");
                     HttpSession session = request.getSession(true);
                     //le asignamos tiempo a la sesion
                     session.setMaxInactiveInterval(5*60);
-
-
 
                     //podemos agregar un cookie tambien
                     Cookie message = new Cookie("mensaje", "Bienvenido");
                     response.addCookie(message);
 
-                    System.out.println("Estamos en login servlet hola  4   !!");
                     session.setAttribute("usuario", usuario);
 
-                    System.out.println("Estamos en login servlet hola  5   !!");
 
                     String temp = usuario.getRol();
                     System.out.println(temp);

@@ -28,6 +28,7 @@ public class Controlador extends HttpServlet {
 
         if (menu.equals("Principal")) {
             request.getRequestDispatcher("mantUsuarios.jsp").forward(request, response);
+
         }
 
         if (menu.equals("admUsuarios")) {
@@ -68,6 +69,10 @@ public class Controlador extends HttpServlet {
 
 
                 case "Eliminar":
+                    idUsuario = Integer.parseInt(request.getParameter("id"));
+                    usuarioDao.Eliminar(idUsuario);
+                    request.getRequestDispatcher("Controlador?menu=admUsuarios&accion=Listar").forward(request, response);
+
                     break;
                 case "Actualizar":
 
