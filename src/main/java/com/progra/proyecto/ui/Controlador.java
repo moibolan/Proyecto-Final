@@ -1,6 +1,8 @@
 package com.progra.proyecto.ui;
 
+import com.progra.proyecto.bl.dao.PeliculaDao;
 import com.progra.proyecto.bl.dao.UsuarioDao;
+import com.progra.proyecto.bl.entities.Pelicula;
 import com.progra.proyecto.bl.entities.Usuario;
 
 
@@ -16,6 +18,11 @@ public class Controlador extends HttpServlet {
     Usuario usuario = new Usuario();
     UsuarioDao usuarioDao = new UsuarioDao();
     int idUsuario;
+
+    Pelicula pelicula = new Pelicula();
+    PeliculaDao peliculaDao = new PeliculaDao();
+    int idPelicula;
+
 
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -108,6 +115,73 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("admUsuarios.jsp").forward(request, response);
         }
 
+
+        if (menu.equals("admPeliculas")) {
+            switch (accion) {
+                case "Listar":
+                    List lista = peliculaDao.Listar();
+                    request.setAttribute("peliculas",lista);
+                    break;
+
+                case "Agregar":
+
+                    String titulo = request.getParameter("titulo");
+                    String descripcion = request.getParameter("descripcion");
+                    String genero = request.getParameter("genero");
+                    String director = request.getParameter("director");
+                    String anno = request.getParameter("anno");
+
+                    pelicula.setTitulo(titulo);
+                    pelicula.setDescripcion(descripcion);
+                    pelicula.setGenero(Integer.parseInt(genero));
+                    pelicula.setDirector(director);
+                    pelicula.setAnno(anno);
+                    peliculaDao.Agregar(pelicula);
+                    request.getRequestDispatcher("Controlador?menu=admPeliculas&accion=Listar").forward(request, response);
+                    break;
+
+
+                case "Eliminar":
+                    idPelicula = Integer.parseInt(request.getParameter("id"));
+                    peliculaDao.Eliminar(idPelicula);
+                    request.getRequestDispatcher("Controlador?menu=admPeliculas&accion=Listar").forward(request, response);
+
+                    break;
+                case "Actualizar":
+
+                    Pelicula pelicula1 = new Pelicula();
+
+                    String tituloUpdate = request.getParameter("titulo");
+                    String descripcionUpdate = request.getParameter("descripcion");
+                    String generoUpdate = request.getParameter("genero");
+                    String directorUpdate = request.getParameter("director");
+                    String annoUpdate = request.getParameter("anno");
+
+
+                    pelicula1.setTitulo(tituloUpdate);
+                    pelicula1.setDescripcion(descripcionUpdate);
+                    pelicula1.setGenero(Integer.parseInt(generoUpdate));
+                    pelicula1.setDirector(directorUpdate);
+                    pelicula1.setAnno(annoUpdate);
+
+
+                    pelicula1.setId(idPelicula);
+                    peliculaDao.Actualizar(pelicula1);
+
+                    request.getRequestDispatcher("Controlador?menu=admPeliculas&accion=Listar").forward(request, response);
+                    break;
+
+                case "Cargar":
+                    idPelicula = Integer.parseInt(request.getParameter("id"));
+                    Pelicula pelicula = peliculaDao.ListarPorId(idPelicula);
+                    request.setAttribute("peliculaSeleccionada", pelicula);
+                    request.getRequestDispatcher("Controlador?menu=admPeliculas&accion=Listar").forward(request, response);
+
+                    break;
+            }
+
+            request.getRequestDispatcher("admPeliculas.jsp").forward(request, response);
+        }
 
 
     }

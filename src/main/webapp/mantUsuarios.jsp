@@ -16,6 +16,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/administrador.css">
     <title>Hello, world!</title>
 </head>
 <body>
@@ -39,14 +40,12 @@
                 <a class="nav-link" href="Controlador?menu=admUsuarios&accion=Listar" target="miContenedor">Mantenimiento de Usuarios</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Controlador?menu=Empleados&accion=Listar" target="miContenedor">Mantenimiento de Peliculas</a>
+                <a class="nav-link" href="Controlador?menu=admPeliculas&accion=Listar" target="miContenedor">Mantenimiento de Peliculas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Controlador?menu=Clientes" target="miContenedor">Clientes</a>
+                <a class="nav-link" href="Controlador?menu=Clientes" target="miContenedor">Navegar como Cliente</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Controlador?menu=Ventas&accion=default" target="miContenedor">Ventas</a>
-            </li>
+      >
         </ul>
         <div class="btn-group">
             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
