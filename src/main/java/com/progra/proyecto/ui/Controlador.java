@@ -4,6 +4,7 @@ import com.progra.proyecto.bl.dao.PeliculaDao;
 import com.progra.proyecto.bl.dao.UsuarioDao;
 import com.progra.proyecto.bl.entities.Pelicula;
 import com.progra.proyecto.bl.entities.Usuario;
+import com.progra.proyecto.services.*;
 
 
 import javax.servlet.*;
@@ -16,14 +17,13 @@ import java.util.List;
 public class Controlador extends HttpServlet {
 
     Usuario usuario = new Usuario();
-    UsuarioDao usuarioDao = new UsuarioDao();
     int idUsuario;
 
     Pelicula pelicula = new Pelicula();
-    PeliculaDao peliculaDao = new PeliculaDao();
     int idPelicula;
 
-
+    PeliculaService peliculaService = new PeliculaServiceImpl();
+    UsuarioService usuarioService = new UsuarioServiceImpl();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -41,7 +41,12 @@ public class Controlador extends HttpServlet {
         if (menu.equals("admUsuarios")) {
             switch (accion) {
                 case "Listar":
-                    List lista = usuarioDao.Listar();
+                    List lista = null;
+                    try {
+                        lista = usuarioService.Listar();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     request.setAttribute("usuarios",lista);
                     break;
 
@@ -69,15 +74,22 @@ public class Controlador extends HttpServlet {
                     System.out.println(usuario.getUltima_conexion());
 
 
-
-                    usuarioDao.Agregar(usuario);
+                    try {
+                        usuarioService.Agregar(usuario);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     request.getRequestDispatcher("Controlador?menu=admUsuarios&accion=Listar").forward(request, response);
                     break;
 
 
                 case "Eliminar":
                     idUsuario = Integer.parseInt(request.getParameter("id"));
-                    usuarioDao.Eliminar(idUsuario);
+                    try {
+                        usuarioService.Eliminar(idUsuario);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     request.getRequestDispatcher("Controlador?menu=admUsuarios&accion=Listar").forward(request, response);
 
                     break;
@@ -99,13 +111,22 @@ public class Controlador extends HttpServlet {
                     usuario1.setUltima_conexion(ultima_conexionUpdate);
 
                     usuario1.setId(idUsuario);
-                    usuarioDao.Actualizar(usuario1);
+                    try {
+                        usuarioService.Actualizar(usuario1);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     request.getRequestDispatcher("Controlador?menu=admUsuarios&accion=Listar").forward(request, response);
                     break;
 
                 case "Cargar":
                     idUsuario = Integer.parseInt(request.getParameter("id"));
-                    Usuario usuario = usuarioDao.ListarPorId(idUsuario);
+                    Usuario usuario = null;
+                    try {
+                        usuario = usuarioService.ListarPorId(idUsuario);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     request.setAttribute("usuarioSeleccionado", usuario);
                     request.getRequestDispatcher("Controlador?menu=admUsuarios&accion=Listar").forward(request, response);
 
@@ -119,7 +140,15 @@ public class Controlador extends HttpServlet {
         if (menu.equals("admPeliculas")) {
             switch (accion) {
                 case "Listar":
-                    List lista = peliculaDao.Listar();
+
+                    //usuario = loginService.login(usuario);
+                    //List lista = peliculaDao.Listar();
+                    List lista = null;
+                    try {
+                        lista = peliculaService.Listar();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     request.setAttribute("peliculas",lista);
                     break;
 
@@ -136,14 +165,24 @@ public class Controlador extends HttpServlet {
                     pelicula.setGenero(Integer.parseInt(genero));
                     pelicula.setDirector(director);
                     pelicula.setAnno(anno);
-                    peliculaDao.Agregar(pelicula);
+
+
+                    try {
+                        peliculaService.Agregar(pelicula);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     request.getRequestDispatcher("Controlador?menu=admPeliculas&accion=Listar").forward(request, response);
                     break;
 
 
                 case "Eliminar":
                     idPelicula = Integer.parseInt(request.getParameter("id"));
-                    peliculaDao.Eliminar(idPelicula);
+                    try {
+                        peliculaService.Eliminar(idPelicula);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     request.getRequestDispatcher("Controlador?menu=admPeliculas&accion=Listar").forward(request, response);
 
                     break;
@@ -166,14 +205,23 @@ public class Controlador extends HttpServlet {
 
 
                     pelicula1.setId(idPelicula);
-                    peliculaDao.Actualizar(pelicula1);
+                    try {
+                        peliculaService.Actualizar(pelicula1);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
                     request.getRequestDispatcher("Controlador?menu=admPeliculas&accion=Listar").forward(request, response);
                     break;
 
                 case "Cargar":
                     idPelicula = Integer.parseInt(request.getParameter("id"));
-                    Pelicula pelicula = peliculaDao.ListarPorId(idPelicula);
+                    Pelicula pelicula = null;
+                    try {
+                        pelicula = peliculaService.ListarPorId(idPelicula);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     request.setAttribute("peliculaSeleccionada", pelicula);
                     request.getRequestDispatcher("Controlador?menu=admPeliculas&accion=Listar").forward(request, response);
 
