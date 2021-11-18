@@ -42,7 +42,6 @@ public class LoginServlet extends HttpServlet {
                 usuario.setPassword(password);
 
                 LoginService loginService = new LoginServiceImpl();
-
                 usuario = loginService.login(usuario);
 
 
