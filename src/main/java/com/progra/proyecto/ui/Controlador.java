@@ -15,7 +15,7 @@ import java.util.List;
 
 @WebServlet(name = "Controlador", value = "/Controlador")
 public class Controlador extends HttpServlet {
-
+    //Comenatario porque no puedo hacer Sysout
     Usuario usuario = new Usuario();
     int idUsuario;
 

@@ -17,7 +17,10 @@ public class LoginServiceImpl implements LoginService{
         System.out.println(usuario.getUsuario());
         System.out.println(usuario.getPassword());
 
+        System.out.println("Buenas noches");
         return usuarioDao.login(usuario);
+
+
     }
 
 }
