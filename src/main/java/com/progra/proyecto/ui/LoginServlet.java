@@ -88,5 +88,6 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("Error.jsp").forward(request, response);
         }
 
+        System.out.println("Buenas noches");
     }
 }
