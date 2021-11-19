@@ -1,17 +1,26 @@
 package com.progra.proyecto.ui;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.progra.proyecto.bl.dao.PeliculaDao;
 import com.progra.proyecto.bl.dao.UsuarioDao;
+import com.progra.proyecto.bl.entities.Genero;
 import com.progra.proyecto.bl.entities.Pelicula;
 import com.progra.proyecto.bl.entities.Usuario;
 import com.progra.proyecto.services.*;
+import com.progra.proyecto.utils.Proxy;
 
 
+import javax.json.JsonArray;
+import javax.json.JsonObject;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @WebServlet(name = "Controlador", value = "/Controlador")
 public class Controlador extends HttpServlet {
@@ -224,6 +233,121 @@ public class Controlador extends HttpServlet {
                     }
                     request.setAttribute("peliculaSeleccionada", pelicula);
                     request.getRequestDispatcher("Controlador?menu=admPeliculas&accion=Listar").forward(request, response);
+
+                    break;
+
+                case "AgregarAPI":
+                    try {
+                        PrintWriter out = response.getWriter();
+
+                        String idTMBDB = request.getParameter("idTMDB");
+                        //String idTMBDB = "1726";
+                        //Obtengo el JSON de la API y me devuelve un objeto tipo JsonObject
+
+                        String apiMovie = "https://api.themoviedb.org/3/movie/" + idTMBDB + "?api_key=fcfc976e866156fd0d2bb5ac00cb521e";
+                        String apiCredits = "https://api.themoviedb.org/3/movie/" + idTMBDB + "/credits?api_key=fcfc976e866156fd0d2bb5ac00cb521e";
+
+                        JsonObject jsonObjectMovie = Proxy.getUsers(apiMovie);
+                        JsonObject jsonObjectCredits = Proxy.getUsers(apiCredits);
+                        JsonObject jsonObjectPerson = Proxy.getUsers("https://api.themoviedb.org/3/person/819?api_key=fcfc976e866156fd0d2bb5ac00cb521e");
+
+                        //Creo que el gson es para imprimir en formato JSON
+                        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                        Gson gsonCredits = new GsonBuilder().setPrettyPrinting().create();
+
+                        String json = gson.toJson(jsonObjectMovie);
+                        String jsonCredits = gsonCredits.toJson(jsonObjectCredits);
+
+
+                        System.out.println("respusta: 1 ");
+                        //System.out.println(json.toString());
+
+                        System.out.println(jsonObjectMovie.get("id"));
+                        System.out.println(jsonObjectMovie.get("original_title").toString().trim());
+                        System.out.println(jsonObjectMovie.get("overview"));
+                        System.out.println(jsonObjectMovie.get("release_date"));
+
+
+                        JsonArray jsonUsersArray = jsonObjectMovie.get("genres").asJsonArray();
+                        JsonArray jsonCreditsArray = jsonObjectCredits.get("crew").asJsonArray();
+
+                        System.out.println(jsonUsersArray.toString());
+
+
+                        List<Genero> generos = jsonUsersArray.stream().map(jsonGenero -> {
+                            Genero genero2 = gson.fromJson(jsonGenero.toString(), Genero.class);
+                            return genero2;}).collect(Collectors.toList());
+
+                        List<Credito> creditos = jsonCreditsArray.stream().map(jsonCredito -> {
+                            Credito credito = gson.fromJson(jsonCredito.toString(), Credito.class);
+                            return credito;}).collect(Collectors.toList());
+
+
+
+
+
+
+                        //generos.stream().forEach(s -> System.out.println(s.getId()));
+                        //generos.stream().forEach(s -> System.out.println(s.getName()));
+
+                        //creditos.stream().forEach(s -> System.out.println(s.getJob()));
+
+                        //creditos.stream().forEach(s -> System.out.println(s.getJob()));
+
+                        String[] answerGenero = {};
+                        String answerDirector = "";
+                        for (Genero element : generos) {
+                            if (!Objects.equals(element.getId(), "0")) {
+                                answerGenero = new String[]{element.getName()};
+
+                            }
+                        }
+                        System.out.println(answerGenero[0]);
+
+                        for (Credito element : creditos) {
+                            if (Objects.equals(element.getJob(), "Director")) {
+                                System.out.println(element.getName());
+                                answerDirector =  element.getName();
+                            }
+                        }
+
+                        //Variables que van a ser ingresadas tomadas desde TheMovieDB
+
+
+
+                        String titleApiPelicula =jsonObjectMovie.get("original_title").toString();
+                        String decripcionApiPelicula = jsonObjectMovie.get("original_title").toString();
+                        //String generoApiPelicula = answerGenero.toString();
+                        String generoApiPelicula = "1";
+                        String directorApiPelicula = answerDirector;
+                        String annoApiPelicula = jsonObjectMovie.get("release_date").toString();
+
+
+                        Pelicula pelicula3 = new Pelicula();
+                        pelicula3.setTitulo(titleApiPelicula);
+                        pelicula3.setDescripcion(decripcionApiPelicula);
+                        pelicula3.setGenero(Integer.parseInt(generoApiPelicula));
+                        pelicula3.setDirector(directorApiPelicula);
+                        pelicula3.setAnno(annoApiPelicula);
+
+
+
+                        try {
+                            peliculaService.Agregar(pelicula3);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        request.getRequestDispatcher("Controlador?menu=admPeliculas&accion=Listar").forward(request, response);
+
+
+//            users.stream().forEach(s -> System.out.println(s.getFirstName()));
+//                        out.println(json);
+
+
+                    }catch(Exception ex){
+                        System.out.println(ex.getMessage());
+                    }
+
 
                     break;
             }

@@ -18,7 +18,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Administrador</title>
 </head>
 <body>
 <div class="row">
@@ -61,6 +61,30 @@
                     <input type="submit" class="btn btn-primary" name="accion" value="Agregar" >
                     <input type="submit" class="btn btn-success" name="accion" value="Actualizar" >
                 </form>
+
+
+                <%--  AQUI INICIA EL FORMULARIO PARA AGREGAR PELICULAS CON LA API --%>
+                <h6> </h6>
+
+                <h6 class="card-subtitle mb-2 text-muted">En este panel podras agregar una pelicula mediante un id automaticamente.</h6>
+
+
+
+                <form action="Controlador?menu=admPeliculas" method="POST">
+
+                        <div class="form-group">
+                            <label>ID Pelicula</label>
+                            <input type="number" class="form-control" name="idTMDB" value="">
+                        </div>
+
+                    <input type="submit" class="btn btn-primary" name="accion" value="AgregarAPI">
+
+
+                </form>
+
+                <%--  AQUI TERMINA --%>
+
+
             </div>
         </div>
     </div>

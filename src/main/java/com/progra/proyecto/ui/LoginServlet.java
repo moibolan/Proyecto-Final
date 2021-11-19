@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
                 usuario = loginService.login(usuario);
 
 
-               ;
+
                 if(Optional.ofNullable(usuario.getRol()).isPresent()){
 
                     //podemos verificar si ya una sesion anterior e invalidarla
