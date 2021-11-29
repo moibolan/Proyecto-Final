@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
 
 
-<%--    Captcha--%>
+    <%--    Captcha--%>
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
         grecaptcha.ready(() => {
@@ -44,7 +44,6 @@
 
 
 </head>
-
 
 
 <body onload="getQueryVariableName('nombre'),getQueryVariablePrecio('precio')"; >
@@ -87,7 +86,7 @@
                         <span>Ingresar</span>
                     </a>
                     <a href="html/constuccion/construccion.html" class="btn btn-hover">
-                        <span>Registraerse</span>
+                        <span>Registrarse</span>
                     </a>
                 </li>
             </ul>
@@ -102,124 +101,80 @@
 
 <!--INICIO FORMULARIO-->
 
-<section class="contact-box">
-    <div class="row no-gutters bg-dark">
-        <div class="col-xl-5 col-lg-12 register-bg">
-
-        </div>
-        <div class="col-xl-7 col-lg-12 d-flex">
-            <div class="container align-self-center p-6">
-                <h1 class="font-weight-bold mb-3">Proceso de alquiler y compra</h1>
-
-                <p class="text-muted mb-5">Ingresa la siguiente información para realizar el alquiler o compra.</p>
-
-                <form id="formulario" name="formulario" onsubmit="validarTodo()" method="post" action="Solicitud" >
-                    <div class="form-row mb-2">
-                        <div class="form-group col-md-6">
-                            <label class="font-weight-bold">Nombre <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="nombre" placeholder="Tu nombre" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="font-weight-bold">Apellido <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="apellido" placeholder="Tu apellido">
-                        </div>
+<div class="creditCardForm">
+    <div class="heading">
+        <h1>Confirmar compra</h1>
+    </div>
+    <div class="payment">
+        <form>
+                    <div class="form-group owner">
+                        <label for="owner">Propietario</label>
+                        <input type="text" class="form-control" id="owner">
                     </div>
-                    <div class="form-group mb-3">
-                        <label class="font-weight-bold">Correo electrónico <span class="text-danger">*</span></label>
-                        <input  class="form-control" placeholder="Ingresa tu correo electrónico" id="correo" name="correo" required >
+                    <div class="form-group CVV">
+                        <label for="cvv">CVV</label>
+                        <input type="text" class="form-control" id="cvv">
                     </div>
-
-
-                    <div class="form-group mb-3">
-                        <input class="form-check-input" type="checkbox" id="hide" name="descuento" checked>
-                        <label class="font-weight-bold">Tarjeta de miembro <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control"  id="tarjeta" maxlength="8" name="tarjeta" placeholder="Ingresa su número de tarjeta">
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <label class="font-weight-bold">Teléfono <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" placeholder="Ingresa tu teléfono"  maxlength="8"   name="telefono"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                    </div>
-
                     <div class="form-group mb-5">
                         <div class="form-check">
-                            <label for="radioComprar">
-                                <input type="radio" id="radioComprar" name=radioVenta> Comprar
+                            <label for="radioVisa">
+                                <input type="radio" id="radioVisa" name=radioTarjeta> VISA
                             </label>
-                            <label for="radioAlquilar">
-                                <input type="radio" id="radioAlquilar" name=radioVenta > Alquilar
+                            <label for="radioAMEX">
+                                <input type="radio" id="radioAMEX" name=radioTarjeta> AMEX
                             </label>
-
+                            <label for="radioMasterCard">
+                                <input type="radio" id="radioMasterCard" name=radioTarjeta > MASTER CARD
+                            </label>
                         </div>
                     </div>
-
-                    <div class="form-group mb-3">
-                        <label class="font-weight-bold">Cantidad de peliculas <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" placeholder="Ingresa la cantidad" id="cantidad" name="cantidad">
-
-
-                        <input type="hidden" name="test" id="test">
-                        <input type="hidden" name="test2" id="test2">
-
-
+                    <div class="form-group" id="card-number-field">
+                        <label for="cardNumber">Numero de tarjeta</label>
+                        <input type="text" class="form-control" id="cardNumber">
                     </div>
 
+                    <div class="form-group" id="expiration-date">
+                        <label>Fecha de expiracion</label>
+                        <select>
+                            <option value="01">Enero</option>
+                            <option value="02">Febrero </option>
+                            <option value="03">Marzo</option>
+                            <option value="04">Abril</option>
+                            <option value="05">Mayo</option>
+                            <option value="06">Junio</option>
+                            <option value="07">Julio</option>
+                            <option value="08">Agosto</option>
+                            <option value="09">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+                        <select>
+                            <option value="16"> 2021</option>
+                            <option value="17"> 2022</option>
+                            <option value="18"> 2023</option>
+                            <option value="19"> 2024</option>
+                            <option value="20"> 2025</option>
+                            <option value="21"> 2026</option>
+                        </select>
+                    </div>
 
-
-
-                    <fieldset>
+                    <div id="comentario">
                         <label>
-                            Preferencias:
+                            Direccion de envio:
                         </label>
-                        <label>
-                            <input type="checkbox" value="terror" id="terror" name="preferencia1"> Terror
-                        </label>
-                        <label>
-                            <input type="checkbox" value="comedia" id="comedia" name="preferencia2"> Comedia
-                        </label>
-                        <label>
-                            <input type="checkbox" value="accion" id="accion" name="preferencia3"> Acción
-                        </label>
-                        <label>
-                            <input type="checkbox" value="fantasia" id="fantasia" name="preferencia4"> Fantasía
-                        </label>
-                        <label>
-                            <input type="checkbox" value="romanticas" id="romanticas" name="preferencia5"> Románticas
-                        </label>
-                    </fieldset>
-
-
-
-
-
-                    <fieldset>
-                        <div id="comentario">
-                            <label>
-                                Información adicional:
-                            </label>
-                            <textarea class="form-control-lg" cols="50" rows="7" maxlength="255" name="informacion" id="informacion">
-                </textarea>
-                        </div>
-                    </fieldset>
+                        <textarea class="form-control-lg" cols="50" rows="7" maxlength="255" name="informacion" id="informacion">
+                        </textarea>
+                    </div>
 
                     <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
 
-
-                    <fieldset class="botones">
-                        <input type="submit" value="Procesar" name="btnEnviar" class="btn btn-primary width-100">
-                        <input type="reset" value="Limpiar formulario"  class="btn btn-secondary" name="btnLimpiar">
-                        <button type="button" class="btn btn-danger"> Cancelar </button>
+                    <fieldset class="botones" id="pay-now">
+                        <input type="submit" value="Procesar" name="btnEnviar" class="btn btn-primary width-100"  id="confirm-purchase">
                     </fieldset>
-
-
-
-                </form>
-                <small class="d-inline-block text-muted mt-5">Todos los derechos reservados | © 2021</small>
-            </div>
-        </div>
+        </form>
     </div>
-</section>
-
+</div>
 <!--FINAL FORMULARIO-->
 
 
@@ -302,6 +257,9 @@
 
 <!-- JQUERY -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/jquery.payform.min.js" charset="utf-8"></script>
 
 <script src="js/url.js"></script>
 <!-- APP SCRIPT -->
