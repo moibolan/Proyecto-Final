@@ -71,7 +71,7 @@ public class LoginServlet extends HttpServlet {
                         response.sendRedirect("Controlador?menu=Principal");
                         //request.getRequestDispatcher("Controlador?menu=Principal");
                     }else if(temp.equals("Cliente")){
-                        response.sendRedirect("home.html");
+                        response.sendRedirect("ControladorCarrito?menu=admPeliculas&accion=Listar");
 
                     }
 

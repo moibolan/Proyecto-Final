@@ -53,7 +53,6 @@
                 ${sessionScope.usuario.getNombre()}
             </button>
             <div  class="dropdown-menu">
-                <a class="dropdown-item" href="#"><i class="fas fa-user"></i></a>
                 <a class="dropdown-item" href="#">${sessionScope.usuario.getRol()}</a>
                 <a class="dropdown-item" href="#">${sessionScope.usuario.getUsuario()}</a>
                 <div class="dropdown-divider"></div>
