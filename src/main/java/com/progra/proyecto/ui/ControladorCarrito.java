@@ -66,7 +66,14 @@ public class ControladorCarrito extends HttpServlet {
                 case "Agregar":
 
                     String cantidad = request.getParameter("cantidad");
+                    String idCliente = request.getParameter("usuarioID");
+                    String Titulo = request.getParameter("tituloID");
+                    String numPelicula = request.getParameter("peliculaID");
+                    String precio = request.getParameter("precioID");
 
+
+                   // System.out.println(request.getParameter("cantidad"));
+                  //  System.out.println(request.getParameter("usuarioID"));
           /*          String titulo = request.getParameter("titulo");
                     String descripcion = request.getParameter("descripcion");
                     String genero = request.getParameter("genero");
@@ -75,10 +82,10 @@ public class ControladorCarrito extends HttpServlet {
 
 
                     productoCarrito.setCantidad(Integer.parseInt(cantidad));
-                    productoCarrito.setIdcliente(1);
-                    productoCarrito.setIdpelicula(1);
-                    productoCarrito.setTitulo("Venom");
-                    productoCarrito.setPrecio(3500);
+                    productoCarrito.setIdcliente(Integer.parseInt(idCliente));
+                    productoCarrito.setIdpelicula(Integer.parseInt(numPelicula));
+                    productoCarrito.setTitulo(Titulo);
+                    productoCarrito.setPrecio(Double.parseDouble(precio));
 
 
                /*     pelicula.setTitulo(titulo);
@@ -95,7 +102,9 @@ public class ControladorCarrito extends HttpServlet {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                   // request.getRequestDispatcher("ControladorCarrito?menu=admPeliculas&accion=Listar").forward(request, response);
+                    System.out.println("antes");
+                    request.getRequestDispatcher("ControladorCarrito?menu=admPeliculas&accion=Listar").forward(request, response);
+                    System.out.println("despues");
                     break;
 
 
@@ -133,6 +142,7 @@ public class ControladorCarrito extends HttpServlet {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+
 
                     request.getRequestDispatcher("ControladorCarrito?menu=admPeliculas&accion=Listar").forward(request, response);
                     break;

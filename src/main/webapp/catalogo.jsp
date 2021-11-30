@@ -115,7 +115,7 @@
 
 <form action="ControladorCarrito?menu=admPeliculas" method="POST">
 
-
+    <input id="usuarioID" name="usuarioID" type="hidden" value="${sessionScope.usuario.getId()}">
     <!-- movie list start -->
     <div class="movieContainer">
         <div class="section-header">
@@ -128,6 +128,12 @@
             <div class="movieItem">
                 <div class="image" id ="335983">
                     <a href="solicitudes.jsp?nombre=Venom&precio=3000">
+                        <input id="peliculaID" name="peliculaID" type="hidden" value="1">
+                        <input id="tituloID" name="tituloID" type="hidden" value="Venomm">
+                        <input id="precioID" name="precioID" type="hidden" value="4500">
+
+
+
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -142,6 +148,8 @@
             </div>
 
             <!-- Final Pelicula-->
+
+
 
             <!-- Inicio Pelicula-->
 

@@ -31,7 +31,7 @@ public class UsuarioDao {
 
 
             System.out.println("Estamos desde el metodo loing en LoginDAO    1  ");
-            String sql = "select nombre, rol, fecha_creacion, ultima_conexion  from usuarios where usuario=? and password=?";
+            String sql = "select id, nombre, rol, fecha_creacion, ultima_conexion  from usuarios where usuario=? and password=?";
 
             System.out.println("Estamos desde el metodo loing en LoginDAO    2  ");
             PreparedStatement ps =connection.prepareStatement(sql);
@@ -51,6 +51,7 @@ public class UsuarioDao {
 
             if (rs.next()) {
 
+                usu.setId(rs.getInt("id"));
                 usu.setNombre(rs.getString("nombre"));
                 usu.setRol(rs.getString("rol"));
                 usu.setFecha_creacion(rs.getString("fecha_creacion"));
