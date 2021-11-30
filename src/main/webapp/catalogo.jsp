@@ -994,8 +994,8 @@
                 <td>${producto.getPrecio()}</td>
 
                 <td>
-                    <a class="btn btn-warning" href="Controlador?menu=admPeliculas&accion=Cargar&id=${pelicula.getId()}">Editar</a>
-                    <a class="btn btn-danger" href="Controlador?menu=admPeliculas&accion=Eliminar&id=${pelicula.getId()}">Eliminar</a>
+
+                    <a class="btn btn-danger" href="ControladorCarrito?menu=admPeliculas&accion=Eliminar&id=${producto.getIdproducto()}">Eliminar</a>
                 </td>
 
             </tr>

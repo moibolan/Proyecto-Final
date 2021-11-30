@@ -32,7 +32,7 @@ public class ControladorCarrito extends HttpServlet {
     int idUsuario;
 
     Pelicula pelicula = new Pelicula();
-    int idPelicula;
+    int idProducto;
 
     ProductoCarrito productoCarrito = new ProductoCarrito();
     ProductoCarritoService productoCarritoService = new ProductoCarritoServiceImpl();
@@ -131,15 +131,18 @@ public class ControladorCarrito extends HttpServlet {
 
 
                 case "Eliminar":
-                    idPelicula = Integer.parseInt(request.getParameter("id"));
+                    idProducto = Integer.parseInt(request.getParameter("id"));
                     try {
-                        peliculaService.Eliminar(idPelicula);
+                        productoCarritoService.Eliminar(idProducto);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    request.getRequestDispatcher("ControladorCarrito?menu=admPeliculas&accion=Listar").forward(request, response);
 
+                    request.getRequestDispatcher("ControladorCarrito?menu=admPeliculas&accion=ListarId").forward(request, response);
                     break;
+
+
+
                 case "Actualizar":
 
                     Pelicula pelicula1 = new Pelicula();
@@ -158,7 +161,7 @@ public class ControladorCarrito extends HttpServlet {
                     pelicula1.setAnno(annoUpdate);
 
 
-                    pelicula1.setId(idPelicula);
+                    pelicula1.setId(idProducto);
                     try {
                         peliculaService.Actualizar(pelicula1);
                     } catch (Exception e) {
@@ -170,10 +173,10 @@ public class ControladorCarrito extends HttpServlet {
                     break;
 
                 case "Cargar":
-                    idPelicula = Integer.parseInt(request.getParameter("id"));
+                    idProducto = Integer.parseInt(request.getParameter("id"));
                     Pelicula pelicula = null;
                     try {
-                        pelicula = peliculaService.ListarPorId(idPelicula);
+                        pelicula = peliculaService.ListarPorId(idProducto);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

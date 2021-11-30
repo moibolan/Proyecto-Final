@@ -100,4 +100,17 @@ public class ProductoCarritoDao {
         return lista;
     }
 
+    public void Eliminar(int id) {
+
+        String sql = "DELETE FROM producto WHERE idproducto=" + id;
+        con = cn.getConnection();
+        try {
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PeliculaDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
 }

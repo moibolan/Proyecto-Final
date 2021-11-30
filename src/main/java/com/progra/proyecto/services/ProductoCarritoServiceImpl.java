@@ -27,4 +27,9 @@ public class ProductoCarritoServiceImpl implements ProductoCarritoService {
     public List ListarId(int id) throws Exception {
         return productoCarritoDao.ListarId(id);
     }
+
+    @Override
+    public void Eliminar(int id) throws Exception {
+         productoCarritoDao.Eliminar(id);
+    }
 }
