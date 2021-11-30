@@ -2,6 +2,7 @@ package com.progra.proyecto.ui;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.progra.proyecto.bl.dao.UsuarioDao;
 import com.progra.proyecto.bl.entities.Genero;
 import com.progra.proyecto.bl.entities.Pelicula;
 import com.progra.proyecto.bl.entities.ProductoCarrito;
@@ -25,7 +26,9 @@ import java.util.stream.Collectors;
 @WebServlet(name = "ControladorCarrito", value = "/ControladorCarrito")
 public class ControladorCarrito extends HttpServlet {
     //Comenatario porque no puedo hacer Sysout
+
     Usuario usuario = new Usuario();
+
     int idUsuario;
 
     Pelicula pelicula = new Pelicula();
@@ -45,7 +48,14 @@ public class ControladorCarrito extends HttpServlet {
 
             switch (accion) {
                 case "Listar":
-                    List lista = productoCarritoService.Listar();
+
+                    HttpSession ses = request.getSession(); //Agarramos la sesion que tiene como atributo usuario
+
+                    usuario = (Usuario) ses.getAttribute("usuario"); // Obtengo el usuario
+
+                    System.out.println(usuario.getId()); // Ejemplo para ver el funcionamiento de usuario
+
+                    List lista = productoCarritoService.Listar(); // Aqui va el metodo que busca en la tabla por el ID usuario
 
                     request.setAttribute("productos",lista);
                     request.getRequestDispatcher("catalogo.jsp").forward(request, response);
