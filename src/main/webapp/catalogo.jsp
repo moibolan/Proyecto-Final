@@ -443,7 +443,10 @@
 
             <div class="movieItem">
                 <div class="image" id = 10195>
-                    <a href="solicitudes.jsp?nombre=Thor&precio=3000">
+                    <a href="solicitudes.jsp?nombre=Thor&precio=1400">
+                        <input  name="peliculaID" type="hidden" value="16">
+                        <input  name="tituloID" type="hidden" value="Thor">
+                        <input  name="precioID" type="hidden" value="1400">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -472,7 +475,10 @@
         <div class="movieList">
             <div class="movieItem">
                 <div class="image" id = 566525>
-                    <a href="solicitudes.jsp?nombre=Shang-chi&precio=3000">
+                    <a href="solicitudes.jsp?nombre=Shang-chi&precio=2600">
+                        <input  name="peliculaID" type="hidden" value="17">
+                        <input  name="tituloID" type="hidden" value="Shang">
+                        <input  name="precioID" type="hidden" value="2600">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -490,6 +496,9 @@
             <div class="movieItem">
                 <div class="image" id = 370172>
                     <a href="solicitudes.jsp?nombre=No time to die&precio=1500">
+                        <input  name="peliculaID" type="hidden" value="18">
+                        <input  name="tituloID" type="hidden" value="NoTime">
+                        <input  name="precioID" type="hidden" value="1500">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -506,8 +515,11 @@
 
             <div class="movieItem">
                 <div class="image" id = 580489 >
-                    <a href="solicitudes.jsp?nombre=Venom 2&precio=1500">
+                    <a href="solicitudes.jsp?nombre=Venom 2&precio=4500">
                         <div class="image__overlay">
+                            <input  name="peliculaID" type="hidden" value="19">
+                            <input  name="tituloID" type="hidden" value="Venom2">
+                            <input  name="precioID" type="hidden" value="4500">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
                 </div>
@@ -523,7 +535,10 @@
 
             <div class="movieItem">
                 <div class="image" id = 522402>
-                    <a href="solicitudes.jsp?nombre=Finch&precio=1500">
+                    <a href="solicitudes.jsp?nombre=Finch&precio=1400">
+                        <input  name="peliculaID" type="hidden" value="20">
+                        <input  name="tituloID" type="hidden" value="KillBill">
+                        <input  name="precioID" type="hidden" value="1400">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -540,7 +555,10 @@
 
             <div class="movieItem">
                 <div class="image" id = 763164>
-                    <a href="solicitudes.jsp?nombre=Apex&precio=1500">
+                    <a href="solicitudes.jsp?nombre=Apex&precio=3200">
+                        <input  name="peliculaID" type="hidden" value="21">
+                        <input  name="tituloID" type="hidden" value="Apex">
+                        <input  name="precioID" type="hidden" value="3200">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -557,7 +575,10 @@
 
             <div class="movieItem">
                 <div class="image" id = 885110>
-                    <a href="solicitudes.jsp?nombre=Amina&precio=1500">
+                    <a href="solicitudes.jsp?nombre=Amina&precio=1900">
+                        <input  name="peliculaID" type="hidden" value="22">
+                        <input  name="tituloID" type="hidden" value="Amina">
+                        <input  name="precioID" type="hidden" value="1900">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -574,7 +595,10 @@
 
             <div class="movieItem">
                 <div class="image" id = 512195>
-                    <a href="solicitudes.jsp?nombre=Alerta Roja&precio=1500">
+                    <a href="solicitudes.jsp?nombre=Alerta Roja&precio=3250">
+                        <input  name="peliculaID" type="hidden" value="23">
+                        <input  name="tituloID" type="hidden" value="AlertaRoja">
+                        <input  name="precioID" type="hidden" value="3250">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -590,7 +614,10 @@
             <!-- Inicio Pelicula-->
             <div class="movieItem">
                 <div class="image" id = 524434>
-                    <a href="solicitudes.jsp?nombre=Eternals&precio=1500">
+                    <a href="solicitudes.jsp?nombre=Eternals&precio=5000">
+                        <input  name="peliculaID" type="hidden" value="24">
+                        <input  name="tituloID" type="hidden" value="Eternals">
+                        <input  name="precioID" type="hidden" value="5000">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -607,7 +634,10 @@
 
             <div class="movieItem">
                 <div class="image" id = 796499>
-                    <a href="solicitudes.jsp?nombre=Ejercito de ladrones&precio=1500">
+                    <a href="solicitudes.jsp?nombre=Ejercito de ladrones&precio=2000">
+                        <input  name="peliculaID" type="hidden" value="25">
+                        <input  name="tituloID" type="hidden" value="Thieves">
+                        <input  name="precioID" type="hidden" value="2000">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -623,7 +653,10 @@
             <!-- Inicio Pelicula-->
             <div class="movieItem">
                 <div class="image" id = 438631>
-                    <a href="solicitudes.jsp?nombre=Dune&precio=1500">
+                    <a href="solicitudes.jsp?nombre=Dune&precio=4000">
+                        <input  name="peliculaID" type="hidden" value="26">
+                        <input  name="tituloID" type="hidden" value="Dune">
+                        <input  name="precioID" type="hidden" value="4000">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -640,6 +673,9 @@
             <div class="movieItem">
                 <div class="image" id = 550988>
                     <a href="solicitudes.jsp?nombre=Free Guy&precio=1500">
+                        <input  name="peliculaID" type="hidden" value="27">
+                        <input  name="tituloID" type="hidden" value="FreeGuy">
+                        <input  name="precioID" type="hidden" value="1500">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -655,7 +691,10 @@
             <!-- Inicio Pelicula-->
             <div class="movieItem">
                 <div class="image" id = 714968>
-                    <a href="solicitudes.jsp?nombre=Plan A&precio=1500">
+                    <a href="solicitudes.jsp?nombre=Plan A&precio=1900">
+                        <input  name="peliculaID" type="hidden" value="28">
+                        <input  name="tituloID" type="hidden" value="PlanA">
+                        <input  name="precioID" type="hidden" value="1900">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -671,7 +710,10 @@
             <!-- Inicio Pelicula-->
             <div class="movieItem">
                 <div class="image" id = 854442>
-                    <a href="solicitudes.jsp?nombre=Next-Door Nightmare&precio=1500">
+                    <a href="solicitudes.jsp?nombre=Next-Door Nightmare&precio=2500">
+                        <input  name="peliculaID" type="hidden" value="29">
+                        <input  name="tituloID" type="hidden" value="Nightmare">
+                        <input  name="precioID" type="hidden" value="2500">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -687,7 +729,10 @@
             <!-- Inicio Pelicula-->
             <div class="movieItem">
                 <div class="image" id = 568620>
-                    <a href="solicitudes.jsp?nombre=Snake Eyes: El origen&precio=1500">
+                    <a href="solicitudes.jsp?nombre=Snake Eyes: El origen&precio=1600">
+                        <input  name="peliculaID" type="hidden" value="30">
+                        <input  name="tituloID" type="hidden" value="Snake">
+                        <input  name="precioID" type="hidden" value="1600">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -703,7 +748,10 @@
             <!-- Inicio Pelicula-->
             <div class="movieItem">
                 <div class="image" id = 635302>
-                    <a href="solicitudes.jsp?nombre=Kimetsu no Yaiba&precio=1500">
+                    <a href="solicitudes.jsp?nombre=Kimetsu no Yaiba&precio=2700">
+                        <input  name="peliculaID" type="hidden" value="31">
+                        <input  name="tituloID" type="hidden" value="DemonSlayer">
+                        <input  name="precioID" type="hidden" value="2700">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -720,7 +768,10 @@
 
             <div class="movieItem">
                 <div class="image" id = 436969>
-                    <a href="solicitudes.jsp?nombre=Suicide Squad&precio=1500">
+                    <a href="solicitudes.jsp?nombre=Suicide Squad&precio=2000">
+                        <input  name="peliculaID" type="hidden" value="32">
+                        <input  name="tituloID" type="hidden" value="SuicideSquad">
+                        <input  name="precioID" type="hidden" value="2000">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -748,7 +799,10 @@
         <div class="movieList">
             <div class="movieItem">
                 <div class="image" id = 296096>
-                    <a href="solicitudes.jsp?nombre=Me before you&precio=3000">
+                    <a href="solicitudes.jsp?nombre=Me before you&precio=2400">
+                        <input  name="peliculaID" type="hidden" value="33">
+                        <input  name="tituloID" type="hidden" value="BeforeYou">
+                        <input  name="precioID" type="hidden" value="2400">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -764,6 +818,9 @@
             <div class="movieItem">
                 <div class="image" id = 372058>
                     <a href="solicitudes.jsp?nombre=Your Name&precio=3000">
+                        <input  name="peliculaID" type="hidden" value="34">
+                        <input  name="tituloID" type="hidden" value="YourName">
+                        <input  name="precioID" type="hidden" value="3000">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -779,7 +836,10 @@
 
             <div class="movieItem">
                 <div class="image" id = 313369>
-                    <a href="solicitudes.jsp?nombre=La la land&precio=3000">
+                    <a href="solicitudes.jsp?nombre=La la land&precio=2500">
+                        <input  name="peliculaID" type="hidden" value="35">
+                        <input  name="tituloID" type="hidden" value="Lalaland">
+                        <input  name="precioID" type="hidden" value="2500">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -796,7 +856,10 @@
 
             <div class="movieItem">
                 <div class="image" id= 568160>
-                    <a href="solicitudes.jsp?nombre=Weathering with you&precio=3000">
+                    <a href="solicitudes.jsp?nombre=Weathering with you&precio=1900">
+                        <input  name="peliculaID" type="hidden" value="36">
+                        <input  name="tituloID" type="hidden" value="Weathering">
+                        <input  name="precioID" type="hidden" value="1900">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -813,7 +876,11 @@
 
             <div class="movieItem">
                 <div class="image" id = 572154>
-                    <a href="solicitudes.jsp?nombre=Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai&precio=3000">
+                    <a href="solicitudes.jsp?nombre=Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai&precio=2000">
+                        <input  name="peliculaID" type="hidden" value="37">
+                        <input  name="tituloID" type="hidden" value="Seishun">
+                        <input  name="precioID" type="hidden" value="2000">
+
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -830,7 +897,10 @@
 
             <div class="movieItem">
                 <div class="image" id = 744275 >
-                    <a href="solicitudes.jsp?nombre=After&precio=3000">
+                    <a href="solicitudes.jsp?nombre=After&precio=500">
+                        <input  name="peliculaID" type="hidden" value="38">
+                        <input  name="tituloID" type="hidden" value="After">
+                        <input  name="precioID" type="hidden" value="500">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
@@ -847,6 +917,9 @@
             <div class="movieItem">
                 <div class="image" id = 222935>
                     <a href="solicitudes.jsp?nombre=The fault in our stars&precio=3000">
+                        <input  name="peliculaID" type="hidden" value="39">
+                        <input  name="tituloID" type="hidden" value="Weathering">
+                        <input  name="precioID" type="hidden" value="1900">
                         <div class="image__overlay">
                             <p class="image__description">Comprar<br>o<br>Rentar</p>
                         </div></a>
