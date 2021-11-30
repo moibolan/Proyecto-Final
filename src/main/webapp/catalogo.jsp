@@ -1112,8 +1112,8 @@
 <%--TABLA CARRITO INICIO--%>
 
 <div class="col-md-7">
-    <table class="table">
-        <thead class="thead-dark">
+    <table class="table table-dark" >
+        <thead>
         <tr>
             <th scope="col">id</th>
             <th scope="col">Titulo</th>
