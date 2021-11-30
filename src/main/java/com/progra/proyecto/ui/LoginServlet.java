@@ -62,6 +62,7 @@ public class LoginServlet extends HttpServlet {
                     Cookie message = new Cookie("mensaje", "Bienvenido");
                     response.addCookie(message);
 
+
                     session.setAttribute("usuario", usuario);
 
 
@@ -71,7 +72,7 @@ public class LoginServlet extends HttpServlet {
                         response.sendRedirect("Controlador?menu=Principal");
                         //request.getRequestDispatcher("Controlador?menu=Principal");
                     }else if(temp.equals("Cliente")){
-                        response.sendRedirect("ControladorCarrito?menu=admPeliculas&accion=Listar");
+                        response.sendRedirect("ControladorCarrito?menu=admPeliculas&accion=ListarId");
 
                     }
 

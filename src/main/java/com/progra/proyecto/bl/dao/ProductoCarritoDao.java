@@ -71,4 +71,33 @@ public class ProductoCarritoDao {
         }
         return lista;
     }
+
+    public List ListarId(int id) {
+        String consulta = "SELECT * FROM producto WHERE idcliente=" + id;
+        List<ProductoCarrito> lista = new ArrayList();
+
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(consulta);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+
+                ProductoCarrito productoCarrito = new ProductoCarrito();
+
+                productoCarrito.setIdproducto(rs.getInt("idproducto"));
+                productoCarrito.setIdcliente(rs.getInt("idcliente"));
+                productoCarrito.setIdpelicula(rs.getInt("idpelicula"));
+                productoCarrito.setTitulo(rs.getString("titulo"));
+                productoCarrito.setCantidad(rs.getInt("cantidad"));
+                productoCarrito.setPrecio(rs.getDouble("precio"));
+
+                lista.add(productoCarrito);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PeliculaDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
+    }
+
 }

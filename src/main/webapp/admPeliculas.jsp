@@ -109,7 +109,7 @@
 
                 <tr>
 
-                    <th scope="row">${pelicula.getId()}</th>
+                    <th>${pelicula.getId()}</th>
                     <td>${pelicula.getTitulo()}</td>
                     <td>${pelicula.getDescripcion()}</td>
                     <td>${pelicula.getGenero()}</td>
