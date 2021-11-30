@@ -41,25 +41,34 @@ public class ControladorCarrito extends HttpServlet {
     UsuarioService usuarioService = new UsuarioServiceImpl();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
+            throws ServletException, IOException {
+
+
 
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
 
+
+
+
+        if (menu.equals("admPeliculas")) {
             switch (accion) {
                 case "Listar":
 
-                    HttpSession ses = request.getSession(); //Agarramos la sesion que tiene como atributo usuario
+                   // Aqui va el metodo que busca en la tabla por el ID usuario
 
-                    usuario = (Usuario) ses.getAttribute("usuario"); // Obtengo el usuario
+                    //usuario = loginService.login(usuario);
+                    //List lista = peliculaDao.Listar();
+                    List lista = null;
+                    try {
 
-                    System.out.println(usuario.getId()); // Ejemplo para ver el funcionamiento de usuario
-
-                    List lista = productoCarritoService.Listar(); // Aqui va el metodo que busca en la tabla por el ID usuario
-
+                        lista = productoCarritoService.Listar();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     request.setAttribute("productos",lista);
-                    request.getRequestDispatcher("catalogo.jsp").forward(request, response);
                     break;
+
                 case "Agregar":
 
                     String cantidad = request.getParameter("cantidad");
@@ -68,6 +77,16 @@ public class ControladorCarrito extends HttpServlet {
                     String numPelicula = request.getParameter("peliculaID");
                     String precio = request.getParameter("precioID");
 
+
+                   // System.out.println(request.getParameter("cantidad"));
+                  //  System.out.println(request.getParameter("usuarioID"));
+          /*          String titulo = request.getParameter("titulo");
+                    String descripcion = request.getParameter("descripcion");
+                    String genero = request.getParameter("genero");
+                    String director = request.getParameter("director");
+                    String anno = request.getParameter("anno");*/
+
+
                     productoCarrito.setCantidad(Integer.parseInt(cantidad));
                     productoCarrito.setIdcliente(Integer.parseInt(idCliente));
                     productoCarrito.setIdpelicula(Integer.parseInt(numPelicula));
@@ -75,10 +94,42 @@ public class ControladorCarrito extends HttpServlet {
                     productoCarrito.setPrecio(Double.parseDouble(precio));
 
 
-                    productoCarritoService.Agregar(productoCarrito);
-                    request.getRequestDispatcher("ControladorCarrito?menu=admPeliculas&accion=Listar").forward(request, response);//aqui vuelves a llamar al listar
+               /*     pelicula.setTitulo(titulo);
+                    pelicula.setDescripcion(descripcion);
+                    pelicula.setGenero(Integer.parseInt(genero));
+                    pelicula.setDirector(director);
+                    pelicula.setAnno(anno);*/
 
+
+                    try {
+
+
+                        productoCarritoService.Agregar(productoCarrito);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("antes");
+                    request.getRequestDispatcher("ControladorCarrito?menu=admPeliculas&accion=Listar").forward(request, response);
+                    System.out.println("despues");
                     break;
+
+                case "ListarId":
+
+                    HttpSession ses = request.getSession(); //Agarramos la sesion que tiene como atributo usuario
+                    usuario = (Usuario) ses.getAttribute("usuario"); // Obtengo el usuario
+
+                    //usuario = loginService.login(usuario);
+                    //List lista = peliculaDao.Listar();
+                    List listaId = null;
+                    try {
+                        listaId = productoCarritoService.ListarId(usuario.getId());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    request.setAttribute("productos",listaId);
+                    break;
+
+
                 case "Eliminar":
                     idPelicula = Integer.parseInt(request.getParameter("id"));
                     try {
@@ -130,27 +181,26 @@ public class ControladorCarrito extends HttpServlet {
                     request.getRequestDispatcher("ControladorCarrito?menu=admPeliculas&accion=Listar").forward(request, response);
 
                     break;
+
+
+
             }
+
+            request.getRequestDispatcher("catalogo.jsp").forward(request, response);
         }
 
+
+    }
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        processRequest(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        processRequest(request, response);
     }
 
 
