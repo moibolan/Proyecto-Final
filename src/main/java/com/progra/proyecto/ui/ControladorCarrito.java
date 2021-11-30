@@ -38,31 +38,18 @@ public class ControladorCarrito extends HttpServlet {
     UsuarioService usuarioService = new UsuarioServiceImpl();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-
+            throws Exception {
 
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
 
-
-
-
-        if (menu.equals("admPeliculas")) {
             switch (accion) {
                 case "Listar":
+                    List lista = productoCarritoService.Listar();
 
-                    //usuario = loginService.login(usuario);
-                    //List lista = peliculaDao.Listar();
-                    List lista = null;
-                    try {
-                        lista = productoCarritoService.Listar();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
                     request.setAttribute("productos",lista);
+                    request.getRequestDispatcher("catalogo.jsp").forward(request, response);
                     break;
-
                 case "Agregar":
 
                     String cantidad = request.getParameter("cantidad");
@@ -71,16 +58,6 @@ public class ControladorCarrito extends HttpServlet {
                     String numPelicula = request.getParameter("peliculaID");
                     String precio = request.getParameter("precioID");
 
-
-                   // System.out.println(request.getParameter("cantidad"));
-                  //  System.out.println(request.getParameter("usuarioID"));
-          /*          String titulo = request.getParameter("titulo");
-                    String descripcion = request.getParameter("descripcion");
-                    String genero = request.getParameter("genero");
-                    String director = request.getParameter("director");
-                    String anno = request.getParameter("anno");*/
-
-
                     productoCarrito.setCantidad(Integer.parseInt(cantidad));
                     productoCarrito.setIdcliente(Integer.parseInt(idCliente));
                     productoCarrito.setIdpelicula(Integer.parseInt(numPelicula));
@@ -88,26 +65,10 @@ public class ControladorCarrito extends HttpServlet {
                     productoCarrito.setPrecio(Double.parseDouble(precio));
 
 
-               /*     pelicula.setTitulo(titulo);
-                    pelicula.setDescripcion(descripcion);
-                    pelicula.setGenero(Integer.parseInt(genero));
-                    pelicula.setDirector(director);
-                    pelicula.setAnno(anno);*/
+                    productoCarritoService.Agregar(productoCarrito);
+                    request.getRequestDispatcher("ControladorCarrito?menu=admPeliculas&accion=Listar").forward(request, response);//aqui vuelves a llamar al listar
 
-
-                    try {
-
-
-                        productoCarritoService.Agregar(productoCarrito);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    System.out.println("antes");
-                    request.getRequestDispatcher("ControladorCarrito?menu=admPeliculas&accion=Listar").forward(request, response);
-                    System.out.println("despues");
                     break;
-
-
                 case "Eliminar":
                     idPelicula = Integer.parseInt(request.getParameter("id"));
                     try {
@@ -159,26 +120,27 @@ public class ControladorCarrito extends HttpServlet {
                     request.getRequestDispatcher("ControladorCarrito?menu=admPeliculas&accion=Listar").forward(request, response);
 
                     break;
-
-
-
             }
-
-            request.getRequestDispatcher("catalogo.jsp").forward(request, response);
         }
 
-
-    }
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

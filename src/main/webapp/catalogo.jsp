@@ -76,15 +76,6 @@
                     </div>
 
                 </li>
-
-                <li>
-                    <a href="html/constuccion/construccion.html" class="btn btn-hover">
-                        <span>Ingresar</span>
-                    </a>
-                    <a href="html/constuccion/construccion.html" class="btn btn-hover">
-                        <span>Registrarse</span>
-                    </a>
-                </li>
             </ul>
             <div class="btn-group">
                 <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

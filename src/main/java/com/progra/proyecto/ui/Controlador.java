@@ -147,6 +147,7 @@ public class Controlador extends HttpServlet {
 
 
         if (menu.equals("admPeliculas")) {
+
             switch (accion) {
                 case "Listar":
 
@@ -159,6 +160,7 @@ public class Controlador extends HttpServlet {
                         e.printStackTrace();
                     }
                     request.setAttribute("peliculas",lista);
+                    request.getRequestDispatcher("admPeliculas.jsp").forward(request, response);
                     break;
 
                 case "Agregar":
@@ -351,8 +353,6 @@ public class Controlador extends HttpServlet {
 
                     break;
             }
-
-            request.getRequestDispatcher("admPeliculas.jsp").forward(request, response);
         }
 
 
